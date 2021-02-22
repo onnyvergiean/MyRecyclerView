@@ -14,9 +14,9 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) :
     RecyclerView.Adapter<GridHeroAdapter.GridViewHolder>() {
 
 
-    override fun onCreateViewHolder(ViewGroup: ViewGroup, viewType: Int): GridViewHolder {
-        val view: View = LayoutInflater.from(ViewGroup.context)
-            .inflate(R.layout.item_grid_hero, ViewGroup, false)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): GridViewHolder {
+        val view: View = LayoutInflater.from(viewGroup.context)
+            .inflate(R.layout.item_grid_hero, viewGroup, false)
         return GridViewHolder(view)
     }
 
