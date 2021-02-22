@@ -22,7 +22,7 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) :
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(listHero[position])
+            .load(listHero[position].photo)
             .apply(RequestOptions().override(350, 550))
             .into(holder.imgPhoto)
 
@@ -32,7 +32,7 @@ class GridHeroAdapter(val listHero: ArrayList<Hero>) :
         return listHero.size
     }
 
-    inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class GridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
     }
 }
