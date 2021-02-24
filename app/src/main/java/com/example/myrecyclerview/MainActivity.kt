@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Hero> = arrayListOf()
+
+    private var title: String = "Mode List"
     private fun setActionBarTitle(title: String) {
         supportActionBar?.title = title
     }
-    private var title: String = "Mode List"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         list.addAll(HeroesData.listData)
         showRecyclerList()
+
+        setActionBarTitle(title)
     }
 
     private fun showRecyclerList() {
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setMode(selectedMode: Int) {
+
         when (selectedMode) {
             R.id.action_list -> {
                 title = "Mode List"
