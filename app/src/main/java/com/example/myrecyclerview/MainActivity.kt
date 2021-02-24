@@ -71,5 +71,6 @@ class MainActivity : AppCompatActivity() {
                 showRecyclerCardView()
             }
         }
+        setActionBarTitle(title)
     }
 }
