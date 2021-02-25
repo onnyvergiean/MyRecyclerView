@@ -4,13 +4,20 @@ import android.icu.text.Transliterator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class ListHeroAdapter(private val listHero : ArrayList<Hero>) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>() {
+    private  lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+this.onItemClickCallback = onItemClickCallback
+    }
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         var tvDetail: TextView = itemView.findViewById(R.id.tv_item_detail)
@@ -33,9 +40,15 @@ class ListHeroAdapter(private val listHero : ArrayList<Hero>) : RecyclerView.Ada
         holder.tvName.text = hero.name
         holder.tvDetail.text = hero.detail
 
+        holder.itemView.setOnClickListener{onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])}
+
     }
 
     override fun getItemCount(): Int {
         return listHero.size
+    }
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: Hero)
     }
 }
